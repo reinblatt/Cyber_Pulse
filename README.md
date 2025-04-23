@@ -1,6 +1,6 @@
 # CyberPulse
 
-CyberPulse is an iOS application that provides real-time cybersecurity news and podcast updates with a focus on user privacy and offline functionality.
+CyberPulse is an iOS application that provides news articles and podcast episodes with a focus on cybersecurity and technology topics.
 
 ## Features
 
@@ -29,9 +29,10 @@ CyberPulse is an iOS application that provides real-time cybersecurity news and 
 
 ## Requirements
 
-- iOS 15.0+
-- Xcode 13.0+
-- Swift 5.5+
+- Xcode 13.0 or later
+- iOS 15.0 or later
+- Swift 5.5 or later
+- macOS 11.0 or later (for development)
 
 ## Dependencies
 
@@ -40,43 +41,46 @@ CyberPulse is an iOS application that provides real-time cybersecurity news and 
 - AVFoundation: For audio playback
 - UserNotifications: For push notifications
 
-## Installation
+## Project Setup
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/CyberPulse.git
-```
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/CyberPulse.git
+   cd CyberPulse
+   ```
 
-2. Open the project in Xcode:
-```bash
-cd CyberPulse
-open CyberPulse.xcodeproj
-```
+2. **Open the Project**
+   - Open `CyberPulse.xcodeproj` in Xcode
+   - Wait for Xcode to finish indexing and resolving dependencies
 
-3. Build and run the project in Xcode
+3. **Configure Signing**
+   - Select the CyberPulse project in the navigator
+   - Select the CyberPulse target
+   - Go to the "Signing & Capabilities" tab
+   - Select your development team
+   - Ensure the bundle identifier is set to `com.cyberpulse.app`
 
-## Architecture
+4. **Add App Icons**
+   - Open `Assets.xcassets`
+   - Navigate to `AppIcon.appiconset`
+   - Add the required app icon images for all sizes:
+     - iPhone: 20pt, 29pt, 40pt, 60pt (2x and 3x)
+     - iPad: 20pt, 29pt, 40pt, 76pt, 83.5pt (1x and 2x)
+     - App Store: 1024x1024 (1x)
 
-The app follows the MVVM (Model-View-ViewModel) architecture pattern:
+## Build and Run
 
-### Models
-- `NewsArticle`: CoreData entity for news articles
-- `PodcastEpisode`: CoreData entity for podcast episodes
-- `UserPreferences`: CoreData entity for user settings
-- `Feed`: Model for RSS and podcast feeds
+1. **Select Target Device**
+   - Choose a simulator or connected device from the device menu
+   - Ensure the selected device runs iOS 15.0 or later
 
-### ViewModels
-- `NewsViewModel`: Manages news article data and operations
-- `PodcastViewModel`: Handles podcast playback and episode management
+2. **Build the Project**
+   - Press ⌘B or select Product > Build
+   - Wait for the build to complete
 
-### Views
-- `ContentView`: Main tab-based interface
-- `PodcastView`: Podcast episode list and player
-- `PodcastPlayerView`: Full-screen podcast player
-
-### Services
-- `CoreDataManager`: Handles local data storage
-- `FeedService`: Manages RSS and podcast feed updates
+3. **Run the App**
+   - Press ⌘R or select Product > Run
+   - The app will launch on the selected device
 
 ## Project Structure
 
@@ -84,24 +88,34 @@ The app follows the MVVM (Model-View-ViewModel) architecture pattern:
 CyberPulse/
 ├── App/
 │   ├── AppDelegate.swift
-│   └── SceneDelegate.swift
+│   ├── SceneDelegate.swift
+│   └── Info.plist
 ├── Models/
-│   ├── Feed.swift
-│   ├── NewsItem.swift
+│   ├── CoreDataModel.swift
+│   ├── NewsArticle.swift
+│   ├── PodcastEpisode.swift
+│   ├── UserPreferences.swift
 │   └── CyberPulse.xcdatamodeld/
-├── ViewModels/
-│   ├── NewsViewModel.swift
-│   └── PodcastViewModel.swift
 ├── Views/
 │   ├── ContentView.swift
+│   ├── MainTabBarController.swift
+│   ├── PodcastPlayerView.swift
 │   ├── PodcastView.swift
-│   └── PodcastPlayerView.swift
-├── Services/
-│   ├── CoreDataManager.swift
-│   └── FeedService.swift
-└── Resources/
-    └── Assets.xcassets/
+│   ├── Common/
+│   └── News/
+├── Resources/
+│   ├── Assets.xcassets/
+│   └── LaunchScreen.storyboard
+└── Services/
 ```
+
+## Core Features
+
+- News article browsing and reading
+- Podcast episode streaming and downloading
+- User preferences management
+- Background audio playback
+- Push notifications
 
 ## Security Considerations
 

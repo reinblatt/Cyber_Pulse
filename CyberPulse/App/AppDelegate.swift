@@ -7,9 +7,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CyberPulse")
+        
+        // Enable automatic migration
+        let description = NSPersistentStoreDescription()
+        description.shouldMigrateStoreAutomatically = true
+        description.shouldInferMappingModelAutomatically = true
+        container.persistentStoreDescriptions = [description]
+        
         container.loadPersistentStores { description, error in
             if let error = error {
-                fatalError("Unable to load persistent stores: \(error)")
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate.
+                let nsError = error as NSError
+                print("Unresolved error \(nsError), \(nsError.userInfo)")
+                
+                // Attempt to delete and recreate the store
+                if let url = description.url {
+                    try? FileManager.default.removeItem(at: url)
+                    container.loadPersistentStores { description, error in
+                        if let error = error {
+                            print("Failed to recreate store: \(error)")
+                        }
+                    }
+                }
             }
         }
         return container
@@ -40,7 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("Unresolved error \(nserror), \(nserror.userInfo)")
+                // Don't crash the app, just log the error
             }
         }
     }

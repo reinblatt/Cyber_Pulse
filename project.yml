@@ -1,0 +1,37 @@
+name: CyberPulse
+options:
+  bundleIdPrefix: com.cyberpulse
+  deploymentTarget:
+    iOS: 15.0
+  xcodeVersion: "13.0"
+  createIntermediateGroups: true
+  usesTabs: false
+  indentWidth: 2
+  tabWidth: 2
+  developmentLanguage: en
+
+targets:
+  CyberPulse:
+    type: application
+    platform: iOS
+    sources:
+      - CyberPulse
+    settings:
+      base:
+        INFOPLIST_FILE: CyberPulse/App/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.cyberpulse.app
+        SWIFT_VERSION: 5.5
+        TARGETED_DEVICE_FAMILY: 1,2
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: "" # Add your team ID here
+        ENABLE_BITCODE: NO
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+    capabilities:
+      backgroundModes:
+        - audio
+        - fetch
+      pushNotifications: true
+    dependencies:
+      - package: FeedKit
+        url: https://github.com/nmdias/FeedKit.git
+        from: 9.1.2 

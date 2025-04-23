@@ -1,35 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="NewsArticle" representedClassName="NewsArticle" syncable="YES">
+        <attribute name="category" optional="NO" attributeType="String"/>
         <attribute name="content" optional="NO" attributeType="String"/>
-        <attribute name="date" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="isBookmarked" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isRead" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="isSaved" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="severity" optional="NO" attributeType="String"/>
+        <attribute name="publishedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="source" optional="NO" attributeType="String"/>
         <attribute name="title" optional="NO" attributeType="String"/>
-        <attribute name="url" optional="NO" attributeType="URI"/>
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="url" optional="NO" attributeType="String"/>
     </entity>
     <entity name="PodcastEpisode" representedClassName="PodcastEpisode" syncable="YES">
-        <attribute name="audioURL" optional="NO" attributeType="URI"/>
-        <attribute name="date" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="audioUrl" optional="NO" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="descriptionText" optional="NO" attributeType="String"/>
+        <attribute name="downloadProgress" optional="NO" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="duration" optional="NO" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="isDownloaded" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="isPlayed" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="localAudioPath" optional="YES" attributeType="String"/>
+        <attribute name="localPath" optional="YES" attributeType="String"/>
+        <attribute name="podcastImageUrl" optional="YES" attributeType="String"/>
         <attribute name="podcastName" optional="NO" attributeType="String"/>
-        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="publishedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="NO" attributeType="String"/>
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="UserPreferences" representedClassName="UserPreferences" syncable="YES">
-        <attribute name="lastRefreshDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="notificationsEnabled" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="selectedSeverityLevels" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
-        <attribute name="selectedSources" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
-        <attribute name="textToSpeechEnabled" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="autoDownloadEpisodes" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="downloadQuality" optional="NO" attributeType="String"/>
+        <attribute name="fontSize" optional="NO" attributeType="Double" defaultValueString="16.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastSyncDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notificationEnabled" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="notificationTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="selectedCategories" optional="NO" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="selectedSources" optional="NO" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="theme" optional="NO" attributeType="String"/>
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model> 
